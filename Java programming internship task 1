@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Solutions {
+    // Function that implements the
+    // number guessing game
+    public static void guessNumberGame() {
+        // Scanner Class for getting input
+        Scanner sc = new Scanner(System.in);
+
+        // Generate the numbers
+        int number = 1 + (int) (100 * Math.random());
+
+        // Given K trials
+        int K = 5;
+        // declaration of variables
+        int i, guess;
+
+
+        // Iterate over K Trials
+        for (i = 0; i < K; i++) {
+
+            System.out.println("Guess the number:");
+
+            // Take input for guessing
+            guess = sc.nextInt();
+
+            // If the number is guessed
+            if (number == guess) {
+                System.out.println("Congratulations!" + " You guessed the number.");
+                break;
+            //for number is greater than guess
+            } else if (number >= guess + 10 && i != K - 1) {
+                System.out.println("The number is " + "too high than " + guess);
+            } else if (number >= guess + 1 && number <= guess + 9) {
+                System.out.println("You are near to target");
+            }
+            //for number is less than guess
+            else if (number <= guess - 10 && i != K - 1) {
+                System.out.println("The number is" + " too low than " + guess);
+            } else if (number <= guess - 1 && number >= guess - 9) {
+                System.out.println("You are near to target");
+            }
+        }
+         //when trials are ended
+        if (i == K) {
+            System.out.println("You have exhausted" + " K trials.");
+
+            System.out.println("The number was " + number);
+        }
+    }
+
+    // Main Code to call function guessNumberGame
+    public static void main(String arg[]) {
+        Scanner sc = new Scanner(System.in);
+
+
+        for (int i = 0; i < 5; i++) {
+            // Function Call
+            System.out.println("Do you want to play game?" +  " if Yes Press " +  1 + " if No Press " + 2);
+            int choice = sc.nextInt();
+            if (choice == 1) {
+                //Printing statement for taking input from user
+                System.out.println("A number is chosen" + " between 1 to 100."
+                        + "Guess the number" + " within 5 trials.");
+                //calling guess function
+                guessNumberGame();
+                } if (choice == 2) {
+                    System.out.println("Thank You!");
+                    break;
+                }
+
+            }
+        }
+    }
+
